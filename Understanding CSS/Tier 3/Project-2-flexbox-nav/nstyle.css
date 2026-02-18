@@ -1,12 +1,144 @@
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background: #333;
-  padding: 1em;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100vw;
+  height: 100vh;
+  background: #000010;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow:
+    10px 20px #fff,
+    50px 80px #fff,
+    120px 150px #fff,
+    200px 90px #fff,
+    300px 200px #fff,
+    400px 50px #fff,
+    550px 180px #fff,
+    600px 120px #fff,
+    700px 250px #fff,
+    30px 300px #fff,
+    80px 400px #fff,
+    150px 500px #fff,
+    220px 450px #fff,
+    330px 350px #fff,
+    410px 420px #fff,
+    480px 100px #fff,
+    560px 330px #fff,
+    640px 240px #fff,
+    720px 380px #fff,
+    800px 150px #fff,
+    880px 220px #fff,
+    950px 420px #fff,
+    1020px 300px #fff,
+    1100px 180px #fff,
+    1180px 400px #fff,
+    1250px 200px #fff,
+    1320px 100px #fff,
+    1400px 350px #fff,
+    1480px 250px #fff,
+    1550px 50px #fff,
+    1620px 430px #fff,
+    1700px 180px #fff,
+    1780px 300px #fff,
+    1850px 220px #fff,
+    1920px 400px #fff,
+    10px 500px #fff,
+    100px 600px #fff,
+    200px 550px #fff,
+    300px 620px #fff,
+    400px 580px #fff,
+    500px 650px #fff,
+    600px 700px #fff,
+    700px 620px #fff,
+    800px 680px #fff,
+    900px 720px #fff,
+    1000px 640px #fff,
+    1100px 700px #fff,
+    1200px 750px #fff,
+    1300px 680px #fff,
+    1400px 720px #fff,
+    1500px 690px #fff,
+    1600px 730px #fff,
+    1700px 750px #fff,
+    1800px 700px #fff,
+    1900px 750px #fff,
+    2000px 720px #fff;
+  animation: twinkle1 5s linear infinite;
+  pointer-events: none;
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  box-shadow: 200px 90px #fff, 300px 200px #fff, 400px 50px #fff;
+  animation: twinkle2 4s linear infinite;
+}
+
+@keyframes twinkle1 {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes twinkle2 {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.1; }
 }
 
 .navbar a {
-  color: white;
+  padding: 12px 25px;
   text-decoration: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6),
+              0 0 20px rgba(106,17,203,0.5),
+              0 0 30px rgba(37,117,252,0.4);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar a:hover {
+  transform: scale(1.2) rotate(-2deg);
+  background: linear-gradient(45deg, #ff6ec4, #7873f5, #00ffff);
+  box-shadow: 0 0 15px #fff,
+              0 0 25px #ff6ec4,
+              0 0 35px #00ffff,
+              0 0 45px #7873f5;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00ffff;
+}
+
+.navbar a::after {
+  content: '★';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 10px;
+  color: #fff;
+  animation: orbit 2s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(5px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(5px) rotate(-360deg); }
 }
