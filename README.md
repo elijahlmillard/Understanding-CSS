@@ -1,2 +1,1 @@
-# Understanding-CSS
-Learning tool to set you up to be successful in html.
+Host the index.html in the UNDERSTANDING-CSS folder for a navigation to each html page
