@@ -1,1 +1,1 @@
-Host the index.html in the UNDERSTANDING-CSS folder for a navigation to each html page
+visit https://elijahlmillard.github.io/Understanding-CSS/ to see the website
