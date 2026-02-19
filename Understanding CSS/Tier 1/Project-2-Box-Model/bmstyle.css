@@ -1,6 +1,29 @@
-.box {
+/*.box {
   background-color: rgb(36, 148, 186);
   padding: 10px;
   border: 50px solid rgb(68, 68, 176);
   margin: 50px;
+}*/
+
+body {
+    background-color: hotpink;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    font-size: 28px;
+}
+
+.box {
+    background-color: lime;
+    color: blue;
+    padding: 60px 5px 200px 90px;
+    margin: 120px;
+    border: 25px dashed orange;
+    border-radius: 50px;
+}
+
+.box:hover {
+    background-color: yellow;
+    border: 25px dotted purple;
+    font-size: 40px;
+    transition: all 0.2s ease-in-out;
 }
