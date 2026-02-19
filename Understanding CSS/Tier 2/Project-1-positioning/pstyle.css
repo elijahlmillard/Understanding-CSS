@@ -5,7 +5,25 @@ header {
   position: sticky;
   top: 0;
 }
+/*
+#banana-split {
+  font-size: xx-small;
+}*/
+
+#title {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  position: sticky;
+  top: 40;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 red;
+}
 
 #banana-split {
   font-size: xx-small;
+  line-height: 6px;
+  letter-spacing: 1px;
+  text-align: justify;
 }
