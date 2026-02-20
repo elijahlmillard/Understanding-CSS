@@ -1,10 +1,21 @@
+/*
+  Full page Centering Layout
+  uses CSS grid to perfectly align in the center
+*/
+
 body {
+  /* set hight to viewing size of screen */
   height: 100vh;
+  /* set the display layout to grid */
   display: grid;
+  /* place items in the center of the grid */
   place-items: center;
   background: linear-gradient(135deg, #667eea, #764a2);
+  /* Diagonal gradient background */
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
+/* depreciated card */
 /*.card {
   padding: 2rem;
   border-radius: 20 px;
@@ -15,115 +26,173 @@ body {
 }*/
 
 .card {
+  /* set padding to root em of the font size */
   padding: 2.5rem;
+  /* border of the card */
   border-radius: 20px;
   color: white;
+  /* color of card text */
+  /* sets position of pseudo elements reletive to this card */
   position: relative;
+  /* sets rendering position behind other elements */
   z-index: 0;
+  /* keeps animated elements from "spilling" outside the edges of the card */
   overflow: hidden;
 
-  /* layered cosmic background */
+  /*
+    the black background of the card */
   background:
     radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 40%),
     radial-gradient(circle at 70% 70%, rgba(0,255,255,0.06), transparent 50%),
     linear-gradient(145deg, #0a0a0a, #1a1a1a);
 
   box-shadow:
+  /* 
+    several box shadows for added depth, like its glowing inwards
+    inset, inset, outer shadows
+  */
     inset 0 0 40px rgba(0, 255, 255, 0.08),
     inset 0 0 80px rgba(255, 0, 255, 0.05),
     0 20px 40px rgba(0, 0, 0, 0.6);
 
+  /* smooth animation for transform and shadow box, ease for natural accereration/deceleration */
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* subtle animated shimmer */
+/*
+  Uses ::after pseudo-element to add a visual effect.
+  Creates a diagonal light streak that moves across the card.
+*/
 .card::after {
+  /* required to render content */
   content: "";
+  /* positioned absolutly withen parent container */
   position: absolute;
+  /* fill the entire container */
   inset: 0;
+  /* the color for the light */
   background: linear-gradient(
     120deg,
     transparent 30%,
     rgba(255,255,255,0.05),
     transparent 70%
   );
+  /* start off screen to the left */
   transform: translateX(-100%);
+  /* apply animation continuously */
   animation: shimmer 6s infinite linear;
+  /* not effected by the pointer */
   pointer-events: none;
 }
 
+/* set the end of the keyframe at the end of container to the right */
 @keyframes shimmer {
   to {
     transform: translateX(100%);
   }
 }
 
-/* Hover lift */
+/* Lift on hover */
 .card:hover {
+  /* move up and enlarge slightly */
   transform: translateY(-10px) scale(1.02);
+  /* add box shadow */
   box-shadow:
     inset 0 0 60px rgba(0, 255, 255, 0.15),
     0 30px 60px rgba(0, 0, 0, 0.8);
 }
 
 .card::before {
+  /* required to render content */
   content: "";
+  /* positioned absolutly withen parent container */
   position: absolute;
+  /* expands borders slightly beyond card borders */
   inset: -3px;
+  /* set color */
   background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+  /* make border slightly curved */
   border-radius: 22px;
+  /* behind content */
   z-index: -1;
+  /* add the spin */
   animation: spin 4s linear infinite;
 }
 
+/* set animation to spin */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
 button {
+  /* needed for absolutly positioned elements ie before and after */
   position: relative;
+  /* space inside the button */
   padding: 0.9rem 2rem;
+  /* font size, duh */
   font-size: 1rem;
+  /* bold text */
   font-weight: bold;
+  /* color */
   color: white;
+  /* black background */
   background: #000;
+  /* remove default border */
   border: none;
+  /* pill shaped */
   border-radius: 50px;
+
   cursor: pointer;
+  /* sets stacking base for pseudo elements */
   z-index: 0;
+  /* no overflow, like a clipping mask */
   overflow: hidden;
+  /* transform on hover */
   transition: transform 0.2s ease;
 }
 
 button::before {
+  /* required */
   content: "";
+  /* absolute to parent */
   position: absolute;
+  /* expand beyond button edges */
   inset: -3px;
+  /* set to same colors as the other spinning element */
   background: conic-gradient(
     red, orange, yellow, lime, cyan, blue, violet, red
   );
+  /* match the button pill shape */
   border-radius: 50px;
+  /* start with rotation offset */
+  /* behind content and inner mask */
   z-index: -2;
+  /* set the sipn */
   animation: spin 3s linear infinite;
 }
 
 /* Inner mask layer */
 button::after {
+  /* required */
   content: "";
   position: absolute;
+  /* expand beyond button edges */
   inset: 3px;
+  /* set inner mask to black */
   background: #000;
+  /* the pill shape agian */
   border-radius: 50px;
+  /* above other spinning circle */
   z-index: -1;
 }
 
-/* Hover insanity */
+/* hover effect, change scale, rotation, brightness, and contrast */
 button:hover {
   transform: scale(1.1) rotate(-2deg);
   filter: brightness(1.3) contrast(1.2);
 }
 
-/* Click effect */
+/* click effect, change scale */
 button:active {
   transform: scale(0.95);
 }
